@@ -106,6 +106,7 @@ function zoomToFeature(e) {
     var feature = e.target.feature;
 
     if (checkExistsLayers(feature)) {
+        dellayer(e.target.feature.properties.Code_commu)
         removerlayers(feature, setStyleLayer, layer, stylelayer.defecto)
         removeBounds(layer)
 
@@ -113,7 +114,7 @@ function zoomToFeature(e) {
         addLayers(feature, setStyleLayer, layer, stylelayer.highlight)
         addBounds(layer)
     }
-    map.fitBounds(arrayBounds);
+    map.fitBounds(arrayBounds.length != 0 ? arrayBounds : initbounds);
     detailsselected.update(featuresSelected)
 
 }
